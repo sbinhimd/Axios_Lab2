@@ -46,17 +46,17 @@ axios({
 var time = moment().format('LTS');
 $('.time').append(`${time}`)
 
-// axios({
-//     method: 'get',
-//     url:'https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=js&lang=en'
-// })
-// .then((response)=> {
-//     var quote= response.quote
-//     console.log(quote);
+axios({
+    method: 'get',
+    url:'https://api.quotable.io/random'
+})
+.then((response)=> {
+    var quotemsg= response.data
+    console.log(quotemsg);
     
-// $('.quote').append(`${quote.quoteText} ${quote.quoteAuthor} `)
-// })
-// .catch((response) => {
-//    console.log("quote error");
+$('footer').append(`${quotemsg.content} ${quotemsg.author} `)
+})
+.catch((response) => {
+   console.log("quote error");
    
-// })
+})
